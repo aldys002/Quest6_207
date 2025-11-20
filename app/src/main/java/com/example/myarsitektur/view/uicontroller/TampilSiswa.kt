@@ -1,7 +1,14 @@
 package com.example.myarsitektur.view.uicontroller
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import com.example.myarsitektur.model.Siswa
 import com.example.myarsitektur.R
@@ -19,4 +26,13 @@ fun TampilSiswa(
         Pair(first = stringResource(id = R.string.gender), second = statusUiSiswa.gender),
         Pair(first = stringResource(id = R.string.alamat), second = statusUiSiswa.alamat)
     )
+
+    Scaffold(modifier = Modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = R.string.app_name), color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = colorResource(id = R.color.purple_500)),
+
+            )
+        }) {  }
 }
