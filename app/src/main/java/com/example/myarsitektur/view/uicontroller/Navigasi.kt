@@ -11,6 +11,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myarsitektur.view.FormSiswa
 import com.example.myarsitektur.view.TampilSiswa
@@ -36,7 +37,7 @@ fun SiswaApp(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
             modifier = Modifier.padding(isiRuang)
-        ) {
+        )  {
             composable(route = Navigasi.Formulir.name) {
                 val context = LocalContext.current
                 FormSiswa(
@@ -57,8 +58,7 @@ fun SiswaApp(
         }
     }
 }
-private fun cancelAndBackToFormulir(
-    navController: NavController
-) {
+
+private fun cancelAndBackToFormulir(navController: NavHostController) {
     navController.popBackStack(route = Navigasi.Formulir.name, inclusive = false)
 }
