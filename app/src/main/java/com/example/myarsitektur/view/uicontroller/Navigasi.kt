@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.myarsitektur.view.FormSiswa
@@ -26,7 +27,7 @@ fun SiswaApp(
     //edit 1 : parameter viewModel
     modifier: Modifier,
     viewModel: SiswaViewModel = viewModel(),
-    navController: NavController = rememberNavController()
+    navController: NavHostController = rememberNavController()
 ){
     Scaffold { isiRuang->
         //edit2 : tambahkan variabel uiState
