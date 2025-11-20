@@ -1,4 +1,4 @@
-package com.example.myarsitektur.view.uicontroller
+package com.example.myarsitektur.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
