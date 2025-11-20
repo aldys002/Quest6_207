@@ -28,33 +28,32 @@ fun SiswaApp(
     modifier: Modifier,
     viewModel: SiswaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
-){
-    Scaffold { isiRuang->
+) {
+    Scaffold { isiRuang ->
         //edit2 : tambahkan variabel uiState
         val uiState = viewModel.statusUI.collectAsState()
         NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
+            modifier = Modifier.padding(isiRuang)
+        ) {
+            composable(route = Navigasi.Formulir.name) {
+                val context = LocalContext.current
+                FormSiswa(
+                    pilihanJK = JenisK.map { id -> context.resources.getString(id) },
+                    onSubmitButtonClicked = {
+                        viewModel.setSiswa(it)
+                        navController.navigate(Navigasi.Detail.name)
+                    }
+                )
+            }
 
-            modifier = Modifier.padding(paddingValues = isiRuang)
-        ){
-            //edit3 : tambahkan variabel uiState
-            val konteks = LocalContext.current
-            FormSiswa(
-                //edit4 : parameter pilihanJK dan onSumbitButtonClicked
-                pilihanJK = JenisK.map {id -> konteks.resources.getString(id)},
-                onSubmitButtonClicked = {
-                    viewModel.setSiswa(it)
-                    navController.navigate(route = Navigasi.Detail.name)
-                }
-            )
-        }
-        composable(route = Navigasi.Detail.name){
-            TampilSiswa(
-                //edit5 : parameter statusUiSiswa
-                statusUiSiswa = uiState.value,
-                onBackButtonClicked = {cancelAndBackToFormulir(navController)}
-            )
+            composable(route = Navigasi.Detail.name) {
+                TampilSiswa(
+                    statusUiSiswa = uiState.value,
+                    onBackButtonClicked = { cancelAndBackToFormulir(navController) }
+                )
+            }
         }
     }
 }
