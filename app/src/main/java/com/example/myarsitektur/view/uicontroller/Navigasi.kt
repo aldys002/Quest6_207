@@ -16,7 +16,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.myarsitektur.view.FormSiswa
 import com.example.myarsitektur.view.TampilSiswa
 import com.example.myarsitektur.viewmodel.SiswaViewModel
+import com.example.myarsitektur.R
 
+val JenisK = listOf(R.string.laki, R.string.wanita)
 enum class Navigasi {
     Formulir,
     Detail
